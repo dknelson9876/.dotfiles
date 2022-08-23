@@ -1,0 +1,17 @@
+
+# Auto colorize grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Auto colorize ls
+alias ls='ls --color=auto'
+
+alias py='python3'
+alias python='python3'
+
+# Make fzf always use less than half the screen
+alias fzf='fzf --height 40%'
+
+# Use 'cfgrepo' as a special git wrapper
+alias cfgrepo='/usr/bin/git --git-dir=$HOME/.config/.git --work-tree=$HOME'
