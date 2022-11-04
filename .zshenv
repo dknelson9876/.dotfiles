@@ -1,1 +1,1 @@
-ZDOTDIR=/home/ubuntu/.config/zsh
+ZDOTDIR=~/.config/zsh
