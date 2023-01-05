@@ -23,6 +23,8 @@ source "$ZDOTDIR/zsh_functions"
 zsh_add_file "zsh_aliases"
 
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
+bindkey '^ ' autosuggest-accept
+
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
 # Use lf to switch directories and bind it to Ctrl-o
