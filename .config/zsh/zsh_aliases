@@ -7,8 +7,8 @@ alias fgrep='fgrep --color=auto'
 # Auto colorize ls
 alias ls='ls --color=auto'
 
-alias py='python3.8'
-alias python='python3.8'
+alias py='python3'
+alias python='python3'
 
 # Make fzf always use less than half the screen
 alias fzf='fzf --height 40%'
