@@ -1,5 +1,3 @@
-# Created by newuser for 5.8
-
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%21<..<%~%<<%{$fg[red]%}]%{$reset_color%}$%b "
 
@@ -23,7 +21,7 @@ source "$ZDOTDIR/zsh_functions"
 zsh_add_file "zsh_aliases"
 
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
-bindkey '^ ' autosuggest-accept
+bindkey '^J' autosuggest-accept
 
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
@@ -37,7 +35,7 @@ lfcd() {
 		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
 	fi
 }
-bindkey -s '^o' '^ulfcd\n'
+bindkey -s '^o' '^ulfcd^M'
 
 cade() {
 	ssh u1126277@lab1-"$1".eng.utah.edu
@@ -48,4 +46,6 @@ work() {
 }
 
 path+=('/home/ubuntu/scripts')
+path+=('/home/ubuntu/projects/riscv/install/rv32e')
+path+=('/home/ubuntu/projects/riscv/rvddt/src')
 export PATH

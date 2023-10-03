@@ -1,3 +1,62 @@
-set icons
-set colors
 map . set hidden!
+set icons
+set incsearch
+
+map o &mimeopen $f
+map O &mimeopen --ask $f
+
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+map Q edit-config
+
+map a push %mkdir<space>
+
+${{
+    w=$(tput cols)
+    if [ $w -le 160]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
+cmd follow_link %{{
+    lf -remote "send $id select '$(readlink $f)'"
+}}
+map gL follow_link
+map EW $vim -o $fx
+map ET $vim -p $fx
+map V invert-below
+map <esc> quit
+cmap <tab> cmd-menu-complete
+map <backtab> cmd-menu-complete-back
+
+cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+map r push :rename<space>
+
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    printf "delete?[y/n]"
+    read ans
+    [ "$ans" = "y" ] && rm -rf $fx
+}}
+map <delete> delete
+
+map TT :set info time
+map TS :set info size
+map TX :set info time:size
+map TC :set info
+
+map C :calcdirsize
+
+map open ${{
+    case $(file --mime-type -Lb $f) in
+        text/* vim $fx;;
+        *) for f in $fx; do xdg-oppen $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+set previewer batcat
