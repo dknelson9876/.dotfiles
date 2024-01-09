@@ -1,9 +1,11 @@
+set shell zsh
+set shellopts '-eu'
 map . set hidden!
 set icons
 set incsearch
 
-map o &mimeopen $f
-map O &mimeopen --ask $f
+#map o &mimeopen $f
+#map O &mimeopen --ask $f
 
 cmd edit-config ${{
     $EDITOR ~/.config/lf/lfrc
@@ -15,7 +17,7 @@ map a push %mkdir<space>
 
 ${{
     w=$(tput cols)
-    if [ $w -le 160]; then
+    if [ $w -le 160 ]; then
         lf -remote "send $id set ratios 1:2:3"
     else
         lf -remote "send $id set ratios 1:2:3:5"
@@ -52,11 +54,4 @@ map TC :set info
 
 map C :calcdirsize
 
-map open ${{
-    case $(file --mime-type -Lb $f) in
-        text/* vim $fx;;
-        *) for f in $fx; do xdg-oppen $f > /dev/null 2> /dev/null & done;;
-    esac
-}}
-
-set previewer batcat
+#set previewer batcat
