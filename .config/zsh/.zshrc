@@ -45,6 +45,13 @@ work() {
 	cd /mnt/c/Users/dknel/Workspace_"$1"
 }
 
+# set EDITOR to nvim if present, otherwise vim
+if command -v nvim &> /dev/null; then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
+
 path+=('/home/ubuntu/scripts')
 path+=('/home/ubuntu/projects/riscv/install/rv32e')
 path+=('/home/ubuntu/projects/riscv/rvddt/src')
