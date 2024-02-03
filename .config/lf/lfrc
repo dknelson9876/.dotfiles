@@ -1,20 +1,27 @@
+# Configuration file for lf by gokcehan
+# The terminal file manager
+# https://github.com/gokcehan/lf
+#
+# ~/dotfiles/.config/lf/lfrc
+# 
+# By dknelson
+# Adapted from creator's example and various online sources
+#
+# Last updated 2 Feb 2024
+
+###############################################
+#           Options and overrides             #
+###############################################
 set shell zsh
 set shellopts '-eu'
-map . set hidden!
+
+# Enable icons, using the .config/lf/icons file
 set icons
+# Enable incremental search
 set incsearch
 
-#map o &mimeopen $f
-#map O &mimeopen --ask $f
-
-cmd edit-config ${{
-    $EDITOR ~/.config/lf/lfrc
-    lf -remote "send $id source ~/.config/lf/lfrc"
-}}
-map Q edit-config
-
-map a push %mkdir<space>
-
+# Automatically set number/size of columns in lf based
+#  on terminal width
 ${{
     w=$(tput cols)
     if [ $w -le 160 ]; then
@@ -24,20 +31,20 @@ ${{
     fi
 }}
 
-cmd follow_link %{{
-    lf -remote "send $id select '$(readlink $f)'"
+# Override the open command used when 'entering' a file
+# to use $EDITOR if it's a text file
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
 }}
-map gL follow_link
-map EW $vim -o $fx
-map ET $vim -p $fx
-map V invert-below
-map <esc> quit
-cmap <tab> cmd-menu-complete
-map <backtab> cmd-menu-complete-back
 
-cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-map r push :rename<space>
+###############################################
+#      Custom commands with shortcuts         #
+###############################################
 
+# Shortcut: <delete> to delete selected file(s) with confirmation
 cmd delete ${{
     set -f
     printf "$fx\n"
@@ -47,11 +54,52 @@ cmd delete ${{
 }}
 map <delete> delete
 
+# Shortcut: gL to follow symlink
+cmd follow_link %{{
+    lf -remote "send $id select '$(readlink $f)'"
+}}
+map gL follow_link
+
+# Shortcut: 'Q' to edit, then source the config file
+cmd edit-config ${{
+    $EDITOR ~/.config/lf/lfrc
+    lf -remote "send $id source ~/.config/lf/lfrc"
+}}
+map Q edit-config
+
+###############################################
+#              Custom commands                #
+###############################################
+
+# Shortcut: '.' to toggle hidden files
+map . set hidden!
+
+# Shortcut: 'a' to create a directory
+map a push %mkdir<space>
+
+# Shortcuts: open multiple files as tabs/windows in nvim
+map EW $EDITOR -o $fx
+map ET $EDITOR -p $fx
+
+# Shortcut (beta): 'V' to invert selection
+map V invert-below
+
+# Shortcut: <Esc> to quit
+map <esc> quit
+
+# Shortcut: tab completion on lf command line
+cmap <tab> cmd-menu-complete
+map <backtab> cmd-menu-complete-back
+
+# Shorcut: 'r' to rename selected file
+cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+map r push :rename<space>
+
+# Shortcuts: sort by time or size
 map TT :set info time
 map TS :set info size
 map TX :set info time:size
 map TC :set info
 
+# Shortcut: 'c' to calculate folder size
 map C :calcdirsize
-
-#set previewer batcat
