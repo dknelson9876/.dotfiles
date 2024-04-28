@@ -21,11 +21,11 @@ source "$ZDOTDIR/zsh_functions"
 zsh_add_file "zsh_aliases"
 
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
-bindkey '^J' autosuggest-accept
+bindkey '^@' autosuggest-accept 
 
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 
-# Use lf to switch directories and bind it to Ctrl-o
+# Command that allows lf to set current dir on exit
 lfcd() {
 	tmp="$(mktemp)"
 	lf -last-dir-path="$tmp" "$@"
@@ -35,15 +35,15 @@ lfcd() {
 		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
 	fi
 }
+# and bind new lfcd function to Ctrl+o
 bindkey -s '^o' '^ulfcd^M'
 
-cade() {
-	ssh u1126277@lab1-"$1".eng.utah.edu
-}
-
 work() {
-	cd /mnt/c/Users/dknel/Workspace_"$1"
-}
+    if [ -d "/mnt/c/Users" ]; then
+	cd "/mnt/c/Users/dknel/ws_$1"
+    else
+	cd "~/ws_$1"
+    fi
 
 # set EDITOR to nvim if present, otherwise vim
 if command -v nvim &> /dev/null; then
@@ -52,7 +52,5 @@ else
     export EDITOR=vim
 fi
 
-path+=('/home/ubuntu/scripts')
-path+=('/home/ubuntu/projects/riscv/install/rv32e')
-path+=('/home/ubuntu/projects/riscv/rvddt/src')
+path+=('~/scripts')
 export PATH
