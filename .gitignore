@@ -1,1 +1,6 @@
-*
+# shell command history
+.config/zsh/.zsh_history
+# autocomplete option dump
+.config/zsh/.zcompdump
+# downloaded plugins
+.config/zsh/plugins/*
