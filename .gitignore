@@ -4,3 +4,5 @@
 .config/zsh/.zcompdump
 # downloaded plugins
 .config/zsh/plugins/*
+
+.config/ncspot/userstate.cbor
