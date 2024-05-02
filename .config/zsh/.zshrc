@@ -44,6 +44,7 @@ work() {
     else
 	cd "~/ws_$1"
     fi
+}
 
 # set EDITOR to nvim if present, otherwise vim
 if command -v nvim &> /dev/null; then
@@ -52,5 +53,10 @@ else
     export EDITOR=vim
 fi
 
-path+=('~/scripts')
+# Add cargo (rust) to path if installed
+if [ -d "$HOME/.cargo" ]; then
+    path+=("$HOME/.cargo/bin")
+fi
+
+path+=("$HOME/scripts")
 export PATH
