@@ -15,3 +15,5 @@ alias fzf='fzf --height 40%'
 
 # Use 'cfgrepo' as a special git wrapper
 alias cfgrepo='/usr/bin/git --git-dir=$HOME/.config/.git --work-tree=$HOME'
+
+alias yt-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0 $1'
