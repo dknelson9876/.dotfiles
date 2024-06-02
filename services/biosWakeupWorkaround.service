@@ -1,0 +1,9 @@
+[Unit]
+Description=Workaround for Gigabyte B450M DS3H bios sleep/wakeup bug
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "echo PTXH > /proc/acpi/wakeup"
+
+[Install]
+WantedBy=multi-user.target
