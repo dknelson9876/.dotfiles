@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "kanagawa.nvim": { "branch": "master", "commit": "08ed29989834f5f2606cb1ef9d5b24c5ea7b8fa5" },
   "lazy.nvim": { "branch": "main", "commit": "ad30030b6abca7dac5a493c58b4d183b3fe93202" },
+  "nvim-colorizer.lua": { "branch": "master", "commit": "a065833f35a3a7cc3ef137ac88b5381da2ba302e" },
   "nvim-treesitter": { "branch": "master", "commit": "979beffc1a86e7ba19bd6535c0370d8e1aaaad3c" },
   "plenary": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" }
 }
