@@ -39,6 +39,7 @@ lfcd() {
 bindkey -s '^o' '^ulfcd^M'
 
 # Enable fzf shell integration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 if [ -f /usr/share/fzf/shell/key-bindings.zsh ]; then
     source /usr/share/fzf/shell/key-bindings.zsh
 fi
