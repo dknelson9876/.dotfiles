@@ -38,3 +38,9 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- live sub preview
 vim.opt.inccommand = 'split'
 
+-- Highlight rofi config files like css
+vim.api.nvim_create_augroup("RasiFiletype", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = "*.rasi",
+    command = "set filetype=css"
+})
