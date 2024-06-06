@@ -9,6 +9,7 @@ alias ls='ls --color=auto'
 
 alias py='python3'
 alias python='python3'
+alias pip='pip3'
 
 # Make fzf always use less than half the screen
 alias fzf='fzf --height 40%'
