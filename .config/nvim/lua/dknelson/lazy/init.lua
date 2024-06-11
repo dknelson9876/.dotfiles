@@ -5,9 +5,6 @@ return {
         name = 'plenary'
     },
     {
-        'numToStr/Comment.nvim', opts = {}
-    },
-    {
         'norcalli/nvim-colorizer.lua',
         init = function()
             require('colorizer').setup({
@@ -16,4 +13,6 @@ return {
             })
         end
     },
+    -- TODO telescope, nvim-cmp or mini.completions, todo highlights
+    -- possibly oil.nvim?
 }
