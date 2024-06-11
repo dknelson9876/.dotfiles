@@ -65,8 +65,8 @@ if [ -d "$HOME/.cargo" ]; then
 fi
 
 # add ~/.local/bin to path if installed (used by python modules)
-if [ -f "$HOME/.local/bin" ]; then
-    path+=("HOME/.local/bin")
+if [ -d "$HOME/.local/bin" ]; then
+    path+=("$HOME/.local/bin")
 fi
 
 path+=("$HOME/scripts")
