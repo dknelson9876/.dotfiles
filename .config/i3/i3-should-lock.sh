@@ -39,18 +39,23 @@ should_lock() {
 	fi
 }
 
+playing_audio() {
+    if [ $(grep -r RUNNING /proc/asound | wc -l) -eq 0 ]; then
+        return 1
+    else
+        return 0
+    fi
+}
+
 # main()
-if should_lock; then
-# Take a screenshot
-import -window root /tmp/screen_locked.png
-
-# Pixellate it 10x
-mogrify -scale 10% -scale 1000% /tmp/screen_locked.png
-
-# Lock screen with new image
-i3lock -i /tmp/screen_locked.png
-
-# Turn off the screen after a delay
-sleep 60; pgrep i3lock && xset dpms force off
-
+if playing_audio; then
+    exit 1
+else
+    exit 0
 fi
+# if should_lock; then
+#     exit 0
+# else
+#     exit 1
+# fi
+

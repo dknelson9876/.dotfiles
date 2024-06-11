@@ -12,10 +12,11 @@ exec_always killall polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 
 # Lock screen shortcut or automatically after 15 minutes
-bindsym $mod+period exec --no-startup-id ~/.config/i3/fuzzy_lock.sh
-exec xautolock -time 15 -locker ~/.config/i3/fuzzy_lock.sh &
+bindsym $mod+period exec --no-startup-id ~/.config/i3/fuzzy-lock.sh
+exec xautolock -time 15 -locker "bash -c '~/.config/i3/i3-should-lock.sh && ~/.config/i3/fuzzy-lock.sh'" &
 
 bindsym $alt+space exec rofi -show combi
+bindsym $mod+space exec rofimoji
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -32,6 +33,12 @@ for_window [class="^.*"] border pixel 2
                           # class                 border  backgr. text    indicator child_border
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 
+# toggle window opening direction
+exec --no-startup-id ~/.config/i3/alternating-layout.py
+
+# Force Spectacle (KDE screenshot tool) to always float
+for_window [class="spectacle" instance="spectacle"] floating enable
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
@@ -41,7 +48,7 @@ exec --no-startup-id dex-autostart --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/fuzzy-lock.sh --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -118,7 +125,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent

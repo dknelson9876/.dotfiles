@@ -37,8 +37,8 @@ threads: 0;
 /*	scroll-method: 0;*/
 /*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
-    modi: "combi,drun,window,ssh,emoji:rofimoji,power:~/.config/rofi/rofi-power-menu";
-    combi-modes: "drun,window,ssh,power,emojj";
+    modi: "combi,drun,window,ssh,power:~/.config/rofi/rofi-power-menu";
+    combi-modes: "drun,window,ssh,power";
 /*	max-history-size: 25;*/
 /*	combi-hide-mode-prefix: false;*/
 /*	combi-display-format: "{mode} {text}";*/
