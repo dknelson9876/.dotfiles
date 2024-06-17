@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.g.have_nerd_font = true
 
@@ -18,7 +18,7 @@ vim.opt.breakindent = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv "HOME" .. "/.vim/undodir"
 vim.opt.undofile = true
 
 -- case insensitive search unless \C or search has caps
@@ -27,20 +27,20 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -- virtual whitespace chars
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- live sub preview
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Highlight rofi config files like css
 vim.api.nvim_create_augroup("RasiFiletype", { clear = true })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.rasi",
-    command = "set filetype=css"
+    command = "set filetype=css",
 })

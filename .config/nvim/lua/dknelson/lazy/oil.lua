@@ -1,15 +1,15 @@
 return {
-    'stevearc/oil.nvim',
+    "stevearc/oil.nvim",
     opts = {},
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-        require('oil').setup {
+        require("oil").setup {
             columns = {
-                'icon',
+                "icon",
             },
         }
 
         vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
-        vim.keymap.set("n", "<space>-", require("oil").toggle_float, {desc = "Open directory in Oil" })
+        vim.keymap.set("n", "<space>-", require("oil").toggle_float, { desc = "Open directory in Oil" })
     end,
 }

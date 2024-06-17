@@ -2,9 +2,16 @@ local M = {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter.configs").setup({
+        require("nvim-treesitter.configs").setup {
             ensure_installed = {
-                "lua", "vimdoc", "c", "bash", "diff", "markdown", "go", "html"
+                "lua",
+                "vimdoc",
+                "c",
+                "bash",
+                "diff",
+                "markdown",
+                "go",
+                "html",
             },
 
             sync_install = false,
@@ -13,15 +20,15 @@ local M = {
             auto_install = true,
 
             indent = {
-                enable = true
+                enable = true,
             },
 
             highlight = {
                 enable = true,
                 additional_vim_regex_highlighting = { "markdown" },
             },
-        })
-    end
+        }
+    end,
 }
 
-return {M}
+return { M }

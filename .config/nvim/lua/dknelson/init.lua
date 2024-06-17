@@ -1,3 +1,3 @@
-require("dknelson.set")
-require("dknelson.map")
-require("dknelson.lazy_init")
+require "dknelson.set"
+require "dknelson.map"
+require "dknelson.lazy_init"
