@@ -4,7 +4,7 @@ local M = {
     config = function()
         require("nvim-treesitter.configs").setup({
             ensure_installed = {
-                "lua", "vimdoc", "c", "bash", "diff", "markdown", "go"
+                "lua", "vimdoc", "c", "bash", "diff", "markdown", "go", "html"
             },
 
             sync_install = false,
