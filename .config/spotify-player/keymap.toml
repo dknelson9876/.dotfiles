@@ -1,0 +1,36 @@
+[[keymaps]]
+command = "NextTrack"
+key_sequence = ">"
+[[keymaps]]
+command = "SeekForward"
+key_sequence = "C->"
+[[keymaps]]
+command = "PreviousTrack"
+key_sequence = "<"
+[[keymaps]]
+command = "SeekBackward"
+key_sequence = "C-<"
+[[keymaps]]
+command = "VolumeUp"
+key_sequence = "]"
+[[keymaps]]
+command = "VolumeDown"
+key_sequence = "["
+[[keymaps]]
+command = "Mute"
+key_sequence = "m"
+[[keymaps]]
+command = "FocusNextWindow"
+key_sequence = "C-j"
+[[keymaps]]
+command = "FocusPreviousWindow"
+key_sequence = "C-k"
+[[keymaps]]
+command = "Queue"
+key_sequence = "1"
+[[keymaps]]
+command = "SearchPage"
+key_sequence = "2"
+[[keymaps]]
+command = "LibraryPage"
+key_sequence = "3"

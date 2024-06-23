@@ -1,0 +1,16 @@
+theme = "default"
+tracks_playback_limit = 100
+play_icon = "󰐊 "
+pause_icon = "󰏤 "
+liked_icon = "♥"
+playback_window_position = "Bottom"
+progress_bar_type = "Line"
+
+[device]
+name = "spotify-player"
+device_type = "speaker"
+volume = 70
+bitrate = 320
+audio_cache = false
+normalization = false
+autoplay = true
