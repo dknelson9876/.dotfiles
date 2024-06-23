@@ -7,6 +7,9 @@ return {
             columns = {
                 "icon",
             },
+            keymaps = {
+                ["."] = "actions.toggle_hidden",
+            },
         }
 
         vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" })
