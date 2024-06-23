@@ -6,3 +6,4 @@
 .config/zsh/plugins/*
 
 .config/ncspot/userstate.cbor
+.config/nvim/spell/*
