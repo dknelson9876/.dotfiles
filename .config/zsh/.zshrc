@@ -69,5 +69,10 @@ if [ -d "$HOME/.local/bin" ]; then
     path+=("$HOME/.local/bin")
 fi
 
+# add ~/go/bin to path if installed (used by python modules)
+if [ -d "$HOME/go/bin" ]; then
+    path+=("$HOME/go/bin")
+fi
+
 path+=("$HOME/scripts")
 export PATH
