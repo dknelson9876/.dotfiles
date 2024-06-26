@@ -2,7 +2,8 @@
 return {
     {
         "nvim-lua/plenary.nvim",
-        name = "plenary",
+        -- name = "plenary",
+        lazy = true,
     },
     {
         "norcalli/nvim-colorizer.lua",
@@ -10,6 +11,7 @@ return {
             require("colorizer").setup {
                 "*",
                 lua = { RRGGBBAA = true },
+                toml = { RRGBBAA = true },
             }
         end,
     },
