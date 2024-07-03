@@ -59,20 +59,20 @@ else
     export EDITOR=vim
 fi
 
-# Add cargo (rust) to path if installed
-if [ -d "$HOME/.cargo" ]; then
-    path+=("$HOME/.cargo/bin")
+bin_dirs=(
+    "$HOME/scripts" # hand written scripts
+    "$HOME/.local/bin" # convenient location for manually downloaded binaries
+    "$HOME/.cargo" # rust installed binaries - `cargo install`
+    "$HOME/go/bin" # go installed binaries - `go get`
+    "$HOME/.pyenv/bin" # python version control
+)
+
+for dir in "${bin_dirs[@]}"; do
+    [[ -d $dir ]] && path+=("$dir")
+done
+
+if which pyenv &> /dev/null; then
+    eval "$(pyenv init -)"
 fi
 
-# add ~/.local/bin to path if installed (used by python modules)
-if [ -d "$HOME/.local/bin" ]; then
-    path+=("$HOME/.local/bin")
-fi
-
-# add ~/go/bin to path if installed (used by python modules)
-if [ -d "$HOME/go/bin" ]; then
-    path+=("$HOME/go/bin")
-fi
-
-path+=("$HOME/scripts")
 export PATH
