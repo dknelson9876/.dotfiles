@@ -8,9 +8,9 @@ progress_bar_type = "Line"
 
 [device]
 name = "spotify-player"
-device_type = "speaker"
+device_type = "computer"
 volume = 70
 bitrate = 320
-audio_cache = false
-normalization = false
+audio_cache = true
+normalization = true
 autoplay = true
