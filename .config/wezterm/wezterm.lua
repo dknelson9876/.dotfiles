@@ -11,12 +11,12 @@ config.font_size = 11
 config.background = {
 	{
 		source = {
-			File = "/home/dknel/Pictures/backgrounds/EROS-Wallpaper-WEB.png",
+			File = "/home/dknel/Pictures/backgrounds/waves.jpg",
 		},
 		attachment = "Fixed",
 		height = "100%",
 		hsb = {
-			brightness = 0.2,
+			brightness = 0.01,
 		},
 	},
 }

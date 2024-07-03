@@ -35,6 +35,8 @@ for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4
 
 # toggle window opening direction
 exec --no-startup-id ~/.config/i3/alternating-layout.py
+# set background image
+exec_always --no-startup-id feh --bg-scale /home/dknel/Pictures/backgrounds/16x9/waves.jpg
 
 # Force Spectacle (KDE screenshot tool) to always float
 for_window [class="spectacle" instance="spectacle"] floating enable
