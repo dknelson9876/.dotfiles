@@ -10,6 +10,7 @@ alias ll='eza -l --header --icons --group-directories-first'
 
 alias gg='git log --oneline --graph --all'
 alias gs='git status'
+alias lg='lazygit'
 
 alias py='python3'
 alias python='python3'
@@ -17,9 +18,6 @@ alias pip='pip3'
 
 # Make fzf always use less than half the screen
 alias fzf='fzf --height 40%'
-
-# Use 'cfgrepo' as a special git wrapper
-alias cfgrepo='/usr/bin/git --git-dir=$HOME/.config/.git --work-tree=$HOME'
 
 alias yt-mp3='yt-dlp -x --audio-format mp3 --audio-quality 0 $1'
 
