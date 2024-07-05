@@ -1,5 +1,5 @@
-# Take a screenshot
-import -window root /tmp/screen_locked.png
+# Take a screenshot after a short delay
+sleep 1; import -window root /tmp/screen_locked.png
 
 # Pixellate it 10x
 mogrify -scale 10% -scale 1000% -blur 0x8 /tmp/screen_locked.png
