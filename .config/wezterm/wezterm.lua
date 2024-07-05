@@ -11,8 +11,10 @@ config.font_size = 11
 config.background = {
 	{
 		source = {
-			File = "/home/dknel/Pictures/backgrounds/waves.jpg",
+			-- File = "/home/dknel/Pictures/backgrounds/waves.jpg",
+			Color = "black",
 		},
+		opacity = 0.1,
 		attachment = "Fixed",
 		height = "100%",
 		hsb = {
@@ -20,6 +22,8 @@ config.background = {
 		},
 	},
 }
+
+config.window_background_opacity = 0.95
 
 config.inactive_pane_hsb = {
 	saturation = 0.7,
