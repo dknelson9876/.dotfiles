@@ -9,7 +9,7 @@ progress_bar_type = "Line"
 [device]
 name = "spotify-player"
 device_type = "computer"
-volume = 70
+volume = 90
 bitrate = 320
 audio_cache = true
 normalization = true
