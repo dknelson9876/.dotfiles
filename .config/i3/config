@@ -65,6 +65,7 @@ bindsym $mod+Shift+Control+s exec flameshot screen
 
 # Bind for file browser
 bindsym $mod+e exec thunar
+bindsym $mod+b exec firefox
 
 #####################
 #  Custom Scripts   #
