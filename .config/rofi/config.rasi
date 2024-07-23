@@ -1,3 +1,17 @@
+/**
+* Configuration file for rofi by davatorium
+* The global keyboard launcher
+* https://github.com/davatorium/rofi
+*
+* ~/dotfiles/.config/rofi/config.rasi
+* (.rasi is a custom language very similar to CSS)
+*
+* By dknelson
+*
+* Last updated 23 July 2024
+*
+* TODO: Improve design using inspiration from https://github.com/adi1090x/rofi/
+*/
 @theme "kanagawa"
 configuration {
     font: "JetBrainsMono Nerd Font 12";
