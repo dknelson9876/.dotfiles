@@ -355,3 +355,7 @@ Vagrantfile             
 
 # other formats
 *.pdf   
+*.geojson 󰍍
+*.osm 󰍍
+*.overpassql 󰦄
+*.mapcss 󰨁
