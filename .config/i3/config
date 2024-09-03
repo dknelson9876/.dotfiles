@@ -64,7 +64,7 @@ bindsym $mod+Shift+s exec flameshot gui
 bindsym $mod+Shift+Control+s exec flameshot screen
 
 # Bind for file browser
-bindsym $mod+e exec thunar
+bindsym $mod+e exec nemo
 bindsym $mod+b exec firefox
 
 #####################
@@ -170,6 +170,20 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# Bind odd ws to left monitor, and even to right
+set $mleft "DVI-D-0"
+set $mright "HDMI-0"
+workspace $ws1 output $mleft
+workspace $ws3 output $mleft
+workspace $ws5 output $mleft
+workspace $ws7 output $mleft
+workspace $ws9 output $mleft
+workspace $ws2 output $mright
+workspace $ws4 output $mright
+workspace $ws6 output $mright
+workspace $ws8 output $mright
+workspace $ws10 output $mright
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
