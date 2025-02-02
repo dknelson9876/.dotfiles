@@ -5,6 +5,9 @@ pause_icon = "󰏤 "
 liked_icon = "♥"
 playback_window_position = "Bottom"
 progress_bar_type = "Line"
+ap_port = 8012
+proxy = "localhost"
+client_id = "28b72eeb7a1c4a12aadbf3a5b18e1e0a"
 
 [device]
 name = "spotify-player"
