@@ -11,10 +11,10 @@ key_sequence = "<"
 command = "SeekBackward"
 key_sequence = "C-<"
 [[keymaps]]
-command = "VolumeUp"
+command = { VolumeChange = { offset = 1 } }
 key_sequence = "]"
 [[keymaps]]
-command = "VolumeDown"
+command = { VolumeChange = { offset = -1 } }
 key_sequence = "["
 [[keymaps]]
 command = "Mute"
