@@ -44,6 +44,11 @@ if [ -f /usr/share/fzf/shell/key-bindings.zsh ]; then
     source /usr/share/fzf/shell/key-bindings.zsh
 fi
 
+# Enable zoxide integration
+if which zoxide &> /dev/null; then
+    eval "$(zoxide init zsh)"
+fi
+
 work() {
     if [ -d "/mnt/c/Users" ]; then
         cd "/mnt/c/Users/dknel/ws_$1"
@@ -62,7 +67,8 @@ fi
 bin_dirs=(
     "$HOME/scripts" # hand written scripts
     "$HOME/.local/bin" # convenient location for manually downloaded binaries
-    "$HOME/.cargo" # rust installed binaries - `cargo install`
+    "$HOME/.local/kotlinc/bin" # kotlin dev tools
+    "$HOME/.cargo/bin" # rust installed binaries - `cargo install`
     "$HOME/go/bin" # go installed binaries - `go get`
     "$HOME/.pyenv/bin" # python version control
 )
@@ -70,9 +76,5 @@ bin_dirs=(
 for dir in "${bin_dirs[@]}"; do
     [[ -d $dir ]] && path+=("$dir")
 done
-
-if which pyenv &> /dev/null; then
-    eval "$(pyenv init -)"
-fi
 
 export PATH
