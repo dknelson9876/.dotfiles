@@ -1,0 +1,5 @@
+extensions:
+  geojson: {icon: {glyph: 󰍍, style: {foreground: White}}}
+  osm: {icon: {glyph: 󰍍, style: {foreground: White}}}
+  overpassql: {icon: {glyph: 󰦄, style: {foreground: White}}}
+  mapcss: {icon: {glyph: 󰨁, style: {foreground: White}}}
