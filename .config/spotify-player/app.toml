@@ -1,19 +1,43 @@
-theme = "default"
-tracks_playback_limit = 100
+theme = "dracula" # or "default"
+#client_id = "65b708073fc0480ea92a077233ca87bd" # spotify web client
+client_id = "28b72eeb7a1c4a12aadbf3a5b18e1e0a" # my api client
+client_port = 8080
+login_redirect_uri = "http://127.0.0.1:8989/login"
+playback_format = """
+{status} {track} • {artists}
+{album}
+{metadata}"""
+tracks_playback_limit = 50 # or 100
+app_refresh_duration_in_ms = 32
+playback_refresh_duration_in_ms = 0
+page_size_in_rows = 20
 play_icon = "󰐊 "
 pause_icon = "󰏤 "
 liked_icon = "♥"
-playback_window_position = "Bottom"
+border_type = "Rounded"
+#progress_bar_type = "Rectangle" # or "Line"
 progress_bar_type = "Line"
-ap_port = 8012
-proxy = "localhost"
-client_id = "28b72eeb7a1c4a12aadbf3a5b18e1e0a"
+enable_media_control = true
+enable_streaming = "Always"
+enable_cover_image_cache = true
+default_device = "spotify-player"
+seek_duration_secs = 5
+
+##ap_port = 8012 "The application's Spotify session connection port?
+
+[layout]
+playback_window_position = "Bottom"
+playback_window_height = 6
+
+[layout.library]
+playlist_percent = 40
+album_percent = 40
 
 [device]
 name = "spotify-player"
 device_type = "computer"
-volume = 90
+volume = 70
 bitrate = 320
-audio_cache = true
-normalization = true
+audio_cache = false
+normalization = false
 autoplay = true
