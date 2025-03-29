@@ -14,27 +14,36 @@
 "margin-left": 10,
 "margin-right": 10,
 "margin-top": 2,
+"ipc": true, // enable Inter-process communication
+"exclusive": true,
+"passthrough": false,
 	
 "modules-left": [
-	"custom/menu",
 	"custom/separator#blank_2",
 	"hyprland/workspaces",
-	"custom/separator#blank_2",
-	"mpris",
-	"tray"
+	"custom/separator#blank",
+	"hyprland/window",
 ],
 
 "modules-center": [
+	"custom/playerctl",
+	"custom/separator#blank",
 	"idle_inhibitor",
 	"custom/separator#blank",
-	"clock#3",
+	"clock#2",
 	"custom/separator#blank",
-	"custom/swaync"
+	"custom/swaync",
+	"custom/separator#blank",
+	"custom/cava_mviz",
 ],
 		
 "modules-right": [
-	"hyprland/window",
-	"custom/separator#blank_2",
+    "cpu",
+	"custom/separator#blank",
+    "memory",
+	"custom/separator#blank",
+	"tray",
+	"custom/separator#blank",
 	"pulseaudio",
 	"custom/separator#blank",
 	"custom/power",					

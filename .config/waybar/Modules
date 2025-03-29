@@ -153,11 +153,11 @@
 },
 
 "cpu": {
-	"format": "{usage}% 󰍛",
+	"format": "  {icon}",
 	"interval": 1,
 	"min-length": 5,
 	"format-alt-click": "click",
-	"format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰍛",
+	"format-alt": " {usage:>2}% {icon0}{icon1}{icon2}{icon3}",
 	"format-icons": [
 		"▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"
 	],
@@ -226,9 +226,9 @@
 },
 
 "memory": {
-	"interval": 10,
-	"format": "{used:0.1f}G 󰾆",
-	"format-alt": "{percentage}% 󰾆",
+	"interval": 3,
+	"format": "  {used:0.1f}G",
+	"format-alt": "  {percentage}%",
 	"format-alt-click": "click",
 	"tooltip": true,
 	"tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
@@ -247,17 +247,18 @@
 	"on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
 	"smooth-scrolling-threshold": 1,
 	"player-icons": {
-		"chromium": "",
-		"default": "",
-		"firefox": "",
-		"kdeconnect": "",
-		"mopidy": "",
-		"mpv": "󰐹",
-		"spotify": "",
-		"vlc": "󰕼",
+		"chromium": " ",
+		"default": " ",
+		"firefox": " ",
+		"kdeconnect": " ",
+		"mopidy": " ",
+		"mpv": "󰐹 ",
+		"spotify": " ",
+        "spotify_player": " ",
+		"vlc": "󰕼 ",
 	},
 	"status-icons": {
-		"paused": "󰐎",
+		"paused": "󰏤",
 		"playing": "",
 		"stopped": "",
 	},
@@ -317,6 +318,7 @@
 	"format-bluetooth": "{icon} 󰂰 {volume}%",
 	"format-muted": "󰖁",
 	"format-icons": {
+        "alsa_output.usb-SteelSeries_Arctis_Nova_3-00.analog-stereo": "󰋎",
 		"headphone": "",
 		"hands-free": "",
 		"headset": "",
@@ -331,7 +333,8 @@
 		],
 	},
 	"scroll-step": 5.0,
-	"on-click": "$HOME/.config/hypr/scripts/Volume.sh --toggle",
+	//"on-click": "$HOME/.config/hypr/scripts/Volume.sh --toggle",
+    "on-click": "~/.config/polybar/pulseaudio-control --node-type input next-node",
 	"on-click-right": "pavucontrol -t 3",
 	"on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
 	"on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",
