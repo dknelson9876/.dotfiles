@@ -1,7 +1,6 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 
-// ### Minimal - Long ### //
-
+// ### DEFAULT - Top (old v2) ### //
 {
 "include": [
   "$HOME/.config/waybar/Modules",
@@ -15,7 +14,7 @@
 "exclusive": true,
 "passthrough": false,
 "position": "top",
-"spacing": 6,
+"spacing": 3,
 "fixed-center": true,
 "ipc": true,
 "margin-top": 3,
@@ -24,25 +23,36 @@
 
 "modules-left": [
 	"custom/menu",
-	"custom/separator#blank_2", 
-	"hyprland/workspaces#pacman",
-	"custom/separator#blank_2",
-	"mpris",
-	"group/notify",
-	"tray",
-	],
-"modules-center": [
-	"clock",
-	"idle_inhibitor",
-	],
-"modules-right": [
-	"group/mobo_drawer",
-	"custom/separator#blank_2",
-	"group/laptop",
-	"custom/separator#blank_2",
-	"group/audio",
-	"custom/separator#blank_2",
-	"custom/power",
+	"custom/light_dark",
+	"custom/separator#dot-line",
+	"group/motherboard",
+	"custom/separator#line",
+	"custom/weather",
 	],
 
+"modules-center": [
+	"group/notify",
+	"custom/cava_mviz",
+	"custom/separator#dot-line",
+	"clock",
+	"custom/separator#line",
+	"hyprland/workspaces#roman",
+	"custom/separator#dot-line",
+	"idle_inhibitor",	
+	"custom/hint",	
+	], 
+
+"modules-right": [
+	"network#speed",
+	"custom/separator#line",
+	"tray",
+	"mpris", 
+	"bluetooth",
+	"group/audio",
+	"keyboard-state",
+	"custom/keyboard",
+	"custom/lock",
+	"custom/separator#dot-line",
+	"custom/power",
+	],
 }
