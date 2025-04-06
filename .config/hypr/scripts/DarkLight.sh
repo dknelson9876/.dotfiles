@@ -1,7 +1,7 @@
 #!/bin/bash
 ## /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # For Dark and Light switching
-# Note: Scripts are looking for keywords Light or Dark except for wallpapers as the are in a separate folders
+# Note: Scripts are looking for keywords Light or Dark except for wallpapers as the are in a separate directories
 
 # Paths
 wallpaper_base_path="$HOME/Pictures/wallpapers/Dynamic-Wallpapers"
@@ -20,8 +20,11 @@ wallust_config="$HOME/.config/wallust/wallust.toml"
 pallete_dark="dark16"
 pallete_light="light16"
 
-# kill swaybg if running
-pkill swaybg
+# intial kill process
+for pid in waybar rofi swaync ags swaybg; do
+    killall -SIGUSR1 "$pid"
+done
+
 
 # Initialize swww if needed
 swww query || swww-daemon --format xrgb
@@ -43,7 +46,7 @@ fi
 
 # Function to update theme mode for the next cycle
 update_theme_mode() {
-    echo "$next_mode" > ~/.cache/.theme_mode
+    echo "$next_mode" > "$HOME/.cache/.theme_mode"
 }
 
 # Function to notify user
@@ -65,7 +68,7 @@ set_waybar_style() {
     waybar_style_link="$HOME/.config/waybar/style.css"
     style_prefix="\\[${theme}\\].*\\.css$"
 
-    style_file=$(find "$waybar_styles" -maxdepth 1 -type f -regex ".*$style_prefix" | shuf -n 1)
+    style_file=$(find -L "$waybar_styles" -maxdepth 1 -type f -regex ".*$style_prefix" | shuf -n 1)
 
     if [ -n "$style_file" ]; then
         ln -sf "$style_file" "$waybar_style_link"
@@ -82,21 +85,23 @@ notify_user "$next_mode"
 # swaync color change
 if [ "$next_mode" = "Dark" ]; then
     sed -i '/@define-color noti-bg/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(0, 0, 0, 0.8);/' "${swaync_style}"
-	sed -i '/@define-color noti-bg-alt/s/#.*;/#111111;/' "${swaync_style}"
+	#sed -i '/@define-color noti-bg-alt/s/#.*;/#111111;/' "${swaync_style}"
 else
     sed -i '/@define-color noti-bg/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(255, 255, 255, 0.9);/' "${swaync_style}"
-	sed -i '/@define-color noti-bg-alt/s/#.*;/#F0F0F0;/' "${swaync_style}"
+	#sed -i '/@define-color noti-bg-alt/s/#.*;/#F0F0F0;/' "${swaync_style}"
 fi
 
 # ags color change
-if [ "$next_mode" = "Dark" ]; then
-    sed -i '/@define-color noti-bg/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(0, 0, 0, 0.4);/' "${ags_style}"
-	sed -i '/@define-color text-color/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(255, 255, 255, 0.7);/' "${ags_style}"
-	sed -i '/@define-color noti-bg-alt/s/#.*;/#111111;/' "${ags_style}"
-else
-    sed -i '/@define-color noti-bg/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(255, 255, 255, 0.4);/' "${ags_style}"
-    sed -i '/@define-color text-color/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(0, 0, 0, 0.7);/' "${ags_style}"
-	sed -i '/@define-color noti-bg-alt/s/#.*;/#F0F0F0;/' "${ags_style}"
+if command -v ags >/dev/null 2>&1; then    
+    if [ "$next_mode" = "Dark" ]; then
+        sed -i '/@define-color noti-bg/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(0, 0, 0, 0.4);/' "${ags_style}"
+	    sed -i '/@define-color text-color/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(255, 255, 255, 0.7);/' "${ags_style}" 
+	    sed -i '/@define-color noti-bg-alt/s/#.*;/#111111;/' "${ags_style}"
+    else
+        sed -i '/@define-color noti-bg/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(255, 255, 255, 0.4);/' "${ags_style}"
+        sed -i '/@define-color text-color/s/rgba([0-9]*,\s*[0-9]*,\s*[0-9]*,\s*[0-9.]*);/rgba(0, 0, 0, 0.7);/' "${ags_style}"
+	    sed -i '/@define-color noti-bg-alt/s/#.*;/#F0F0F0;/' "${ags_style}"
+    fi
 fi
 
 # kitty background color change
@@ -110,16 +115,15 @@ else
 	sed -i '/^cursor /s/^cursor .*/cursor #000000/' "${kitty_conf}"
 fi
 
-for pid in $(pidof kitty); do
-    kill -SIGUSR1 "$pid"
+for pid_kitty in $(pidof kitty); do
+    kill -SIGUSR1 "$pid_kitty"
 done
-
 
 # Set Dynamic Wallpaper for Dark or Light Mode
 if [ "$next_mode" = "Dark" ]; then
-    next_wallpaper="$(find "${dark_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
+    next_wallpaper="$(find -L "${dark_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
 else
-    next_wallpaper="$(find "${light_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
+    next_wallpaper="$(find -L "${light_wallpapers}" -type f \( -iname "*.jpg" -o -iname "*.png" \) -print0 | shuf -n1 -z | xargs -0)"
 fi
 
 # Update wallpaper using swww command
@@ -144,9 +148,9 @@ kvantummanager --set "$kvantum_theme"
 
 # set the rofi color for background
 if [ "$next_mode" = "Dark" ]; then
-    sed -i '24s/.*/background: rgba(0,0,0,0.7);/' $wallust_rofi
+    sed -i '/^background:/s/.*/background: rgba(0,0,0,0.7);/' $wallust_rofi
 else
-    sed -i '24s/.*/background: rgba(255,255,255,0.9);/' $wallust_rofi
+    sed -i '/^background:/s/.*/background: rgba(255,255,255,0.9);/' $wallust_rofi
 fi
 
 
@@ -233,20 +237,18 @@ update_theme_mode
 
 ${SCRIPTSDIR}/WallustSwww.sh &&
 
-# some process to kill
-_ps=(waybar rofi swaync ags swaybg)
-for _prs in "${_ps[@]}"; do
-    if pidof "${_prs}" >/dev/null; then
-        pkill "${_prs}"
-    fi
+sleep 2
+# kill process
+for pid1 in waybar rofi swaync ags swaybg; do
+    killall "$pid1"
 done
 
-sleep 2
+sleep 1
 ${SCRIPTSDIR}/Refresh.sh 
 
-sleep 0.3
+sleep 0.5
 # Display notifications for theme and icon changes 
-notify-send -u normal -i "$notif" " Themes switched to:" " $next_mode Mode"
+notify-send -u low -i "$notif" " Themes switched to:" " $next_mode Mode"
 
 exit 0
 
