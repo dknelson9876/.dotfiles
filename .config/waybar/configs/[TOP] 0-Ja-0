@@ -1,6 +1,6 @@
 /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
 
-// ### DEFAULT - Top ### //
+/* My Mostly Used waybar config incase you wonder :) */
 {
 "include": [
   "$HOME/.config/waybar/Modules",
@@ -22,36 +22,32 @@
 "margin-right": 8,
 
 "modules-left": [
+	"idle_inhibitor",
 	"custom/separator#blank",
-	"custom/cava_mviz",
+	"tray",
 	"custom/separator#blank",
-	"custom/playerctl",
+	"clock",
 	"custom/separator#blank_2",
 	"hyprland/window",
 	],
 
 "modules-center": [
 	"group/app_drawer",
-	"custom/separator#blank",
-	"group/notify",
 	"custom/separator#dot-line",
 	"hyprland/workspaces#rw",
-	"clock",
 	"custom/separator#dot-line",
-	"custom/weather",
-	"custom/separator#dot-line",
-	"idle_inhibitor",	
-	"custom/hint",	
+	"group/notify",	
 	],
 
 "modules-right": [
-	"tray",
-	"network#speed",
-	"custom/separator#dot-line",
+	"group/laptop",
+	"custom/separator#blank",
 	"group/mobo_drawer",
 	"custom/separator#line",  
 	"group/audio",
-	"custom/separator#dot-line", 
+	"custom/separator#dot-line",
+	"mpris",
+	"custom/separator#blank", 
 	"group/status",
 	],
 }

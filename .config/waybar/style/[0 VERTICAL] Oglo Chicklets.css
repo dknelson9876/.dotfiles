@@ -35,8 +35,8 @@ button {
     border: none;
     border-bottom: 8px solid #5d743e;
     border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
     transition: transform 0.1s ease-in-out;
 }
 
@@ -123,7 +123,7 @@ button.active {
 
 #window,
 #workspaces {
-    margin: 0 4px;
+    margin: 5px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -158,7 +158,7 @@ button.active {
     background-color: #ee606a;
     color: #2d353b;
     border-bottom: 8px solid #ca4853;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 #custom-power_vertical{
@@ -224,7 +224,7 @@ label:focus {
     background-color: #64b6ac;
     color: #2d353b;
     border-bottom: 8px solid #4f9990;
-    padding-left: 10px;
+    padding-left: 5px;
 }
 
 #network {
@@ -371,44 +371,27 @@ tooltip label {
 }
 
 
+#backlight-slider slider,
 #pulseaudio-slider slider {
-	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
+  min-height: 7px;
+  min-width: 15px;
+  opacity: 0;
+  background-color: #ffa000;
+  border-radius: 3px;
+  box-shadow: 1px 5px 6px 1px #272727;
 }
 
+#backlight-slider trough,
 #pulseaudio-slider trough {
-	background-color: #7f849c;
-	min-width: 80px;
-	min-height: 5px;
-	border-radius: 5px;
+  min-height: 100px;
+  min-width: 7px;
+  border-radius: 5px;
+  background-color: #d8ac47;
 }
 
+#backlight-slider highlight,
 #pulseaudio-slider highlight {
-	min-height: 10px;
-	border-radius: 5px;
-}
-
-#backlight-slider slider {
-	min-width: 0px;
-	min-height: 0px;
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
-}
-
-#backlight-slider trough {
-	background-color: #7f849c;
-	min-width: 80px;
-	min-height: 10px;
-	border-radius: 5px;
-}
-
-#backlight-slider highlight {
-	min-width: 10px;
-	border-radius: 5px;
+  min-width: 5px;
+  border-radius: 5px;
+  background-color: #64b6ac;
 }
