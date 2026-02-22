@@ -319,6 +319,7 @@
 	"format-muted": "󰖁",
 	"format-icons": {
         "alsa_output.usb-SteelSeries_Arctis_Nova_3-00.analog-stereo": "󰋎",
+        "alsa_output.usb-SteelSeries_Arctis_Nova_5-00.analog-stereo": "󰋎",
 		"headphone": "",
 		"hands-free": "",
 		"headset": "",
@@ -334,7 +335,7 @@
 	},
 	"scroll-step": 5.0,
 	//"on-click": "$HOME/.config/hypr/scripts/Volume.sh --toggle",
-    "on-click": "~/.config/polybar/pulseaudio-control --node-type input next-node",
+    "on-click": "~/.config/polybar/pulseaudio-control --node-type output next-node --node-blacklist alsa_output.pci-0000_0c_00.1.hdmi-stereo-extra1",
 	"on-click-right": "pavucontrol -t 3",
 	"on-scroll-up": "$HOME/.config/hypr/scripts/Volume.sh --inc",
 	"on-scroll-down": "$HOME/.config/hypr/scripts/Volume.sh --dec",

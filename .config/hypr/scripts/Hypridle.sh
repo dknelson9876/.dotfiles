@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 # This is for custom version of waybar idle_inhibitor which activates / deactivates hypridle instead
 
@@ -15,7 +15,8 @@ elif [[ "$1" == "toggle" ]]; then
     if pgrep -x "$PROCESS" >/dev/null; then
         pkill "$PROCESS"
     else
-        "$PROCESS"
+        "$PROCESS" >/dev/null 2>&1 &
+        disown
     fi
 else
     echo "Usage: $0 {status|toggle}"

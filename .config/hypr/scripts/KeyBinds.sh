@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# searchable enabled keybinds using rofi
+# searchable enabled keybinds using rofi (supports bindd descriptions)
 
 # kill yad to not interfere with this binds
 pkill yad || true
@@ -17,23 +17,23 @@ laptop_conf="$HOME/.config/hypr/UserConfigs/Laptops.conf"
 rofi_theme="$HOME/.config/rofi/config-keybinds.rasi"
 msg='☣️ NOTE ☣️: Clicking with Mouse or Pressing ENTER will have NO function'
 
-# combine the contents of the keybinds files and filter for keybinds
-keybinds=$(cat "$keybinds_conf" "$user_keybinds_conf" | grep -E '^bind')
+# collect raw bind lines (strip end-of-line comments) from available files
+files=("$keybinds_conf" "$user_keybinds_conf")
+[[ -f "$laptop_conf" ]] && files+=("$laptop_conf")
 
-# check if laptop.conf exists and add its keybinds if present
-if [[ -f "$laptop_conf" ]]; then
-    laptop_binds=$(grep -E '^bind' "$laptop_conf")
-    keybinds+=$'\n'"$laptop_binds"
+# Parse binds using the python script for speed
+# The last argument must be the user config for override logic to work correctly
+display_keybinds=$("$HOME/.config/hypr/scripts/keybinds_parser.py" "${files[@]}")
+
+# Check for suggestions file created by python script
+if [[ -f "/tmp/hypr_keybind_suggestions_file" ]]; then
+  suggestions_file=$(cat "/tmp/hypr_keybind_suggestions_file")
+  rm "/tmp/hypr_keybind_suggestions_file"
+  if [[ -n "$suggestions_file" && -f "$suggestions_file" ]]; then
+     count=$(wc -l < "$suggestions_file")
+     msg="$msg | Overrides missing unbind: $count (suggestions: $suggestions_file)"
+  fi
 fi
 
-# check for any keybinds to display
-if [[ -z "$keybinds" ]]; then
-    echo "no keybinds found."
-    exit 1
-fi
-
-# replace $mainmod with super in the displayed keybinds for rofi
-display_keybinds=$(echo "$keybinds" | sed 's/\$mainMod/SUPER/g')
-
-# use rofi to display the keybinds with the modified content
-echo "$display_keybinds" | rofi -dmenu -i -config "$rofi_theme" -mesg "$msg"
+# use rofi to display the keybinds
+printf '%s\n' "$display_keybinds" | rofi -dmenu -i -config "$rofi_theme" -mesg "$msg"
