@@ -227,8 +227,6 @@ main() {
         "Edit System Default Startup Apps") file="$configs/Startup_Apps.conf" ;;
         "Edit System Default Window Rules") file="$configs/WindowRules.conf" ;;
         "Edit System Default Settings") file="$configs/SystemSettings.conf" ;;
-        "Set SDDM Wallpaper") $scriptsDir/sddm_wallpaper.sh --normal ;;
-        "Choose Kitty Terminal Theme") $scriptsDir/Kitty_themes.sh ;;
         "Configure Monitors (nwg-displays)") 
             if ! command -v nwg-displays &>/dev/null; then
                 notify-send -i "$iDIR/error.png" "E-R-R-O-R" "Install nwg-displays first"
@@ -259,11 +257,6 @@ main() {
                 exit 1
             fi
             qt5ct ;;
-        "Choose Hyprland Animations") $scriptsDir/Animations.sh ;;
-        "Choose Monitor Profiles") $scriptsDir/MonitorProfiles.sh ;;
-        "Choose Rofi Themes") $scriptsDir/RofiThemeSelector.sh ;;
-        "Search for Keybinds") $scriptsDir/KeyBinds.sh ;;
-        "Toggle Game Mode") $scriptsDir/GameMode.sh ;;
         "Switch Dark-Light Theme") $scriptsDir/DarkLight.sh ;;
         "Rainbow Borders Mode") rainbow_borders_menu ;;
         *) return ;;  # Do nothing for invalid choices
